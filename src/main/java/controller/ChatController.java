@@ -139,6 +139,7 @@ public class ChatController {
         }
     }
 
+
     private void displayMessage(String message) {
         displayMessage(message, message.startsWith("You: "));
     }
