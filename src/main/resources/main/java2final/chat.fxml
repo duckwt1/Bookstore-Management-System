@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.layout.Pane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
+    <center>
+        <ScrollPane fx:id="messageScrollPane" prefHeight="200.0" prefWidth="200.0" styleClass="main-container" BorderPane.alignment="CENTER">
+            <content>
+                <Pane prefHeight="502.0" prefWidth="766.0">
+                    <children>
+                        <VBox fx:id="messageBox" styleClass="input-field" />
+                    </children>
+                </Pane>
+            </content>
+        </ScrollPane>
+    </center>
+    <bottom>
+        <HBox prefHeight="60.0" prefWidth="800.0" spacing="10.0" styleClass="chat-input-box" BorderPane.alignment="CENTER">
+            <children>
+                <TextField fx:id="textTF" prefHeight="60.0" styleClass="input-field" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="sendBT" mnemonicParsing="false" prefHeight="55.0" prefWidth="55.0" styleClass="cartBT">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/send.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" spacing="10" styleClass="main-container" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ForgetPasswordStep2Controller">
+    <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="444.0" text="RESET PASSWORD">
+            <font>
+                <Font name="Berlin Sans FB" size="30.0" />
+            </font>
+        </Label>
+
+        <Pane prefHeight="14.0" prefWidth="410.0" />
+
+        <Label styleClass="input-label" text="OTP" />
+        <TextField fx:id="otpTF" prefHeight="35.0" prefWidth="410.0" promptText="Enter OTP" styleClass="input-field" />
+
+        <Button fx:id="verifyBT" alignment="CENTER" mnemonicParsing="false" onAction="#verifyOTP" prefHeight="40.0" prefWidth="356.0" styleClass="verify-otp-button" text="Verify OTP">
+            <VBox.margin>
+                <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
+            </VBox.margin>
+        </Button>
+
+        <Label styleClass="input-label" text="New Password" />
+        <PasswordField fx:id="newPasswordTF" prefHeight="35.0" prefWidth="410.0" promptText="Enter new password" styleClass="input-field" />
+
+        <Label styleClass="input-label" text="Confirm New Password" />
+        <PasswordField fx:id="confirmNewPasswordTF" prefHeight="35.0" prefWidth="410.0" promptText="Confirm new password" styleClass="input-field" />
+
+        <Pane prefHeight="2.0" prefWidth="410.0" />
+
+        <Button fx:id="changepassBT" alignment="CENTER" mnemonicParsing="false" onAction="#changePassword" prefHeight="40.0" prefWidth="356.0" styleClass="change-password-button" text="Change Password">
+            <VBox.margin>
+                <Insets left="30.0" right="30.0" top="10.0" />
+            </VBox.margin>
+        </Button>
+    </children>
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20" />
+    </padding>
+</VBox>

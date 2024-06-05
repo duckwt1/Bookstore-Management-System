@@ -1,0 +1,115 @@
+.main-container {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20px;
+    -fx-alignment: top_left;
+}
+
+.input-label {
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-padding: 5px 0 5px 5px;
+}
+
+.input-field {
+    -fx-background-color: #f0f0f0;
+    -fx-font-size: 16px;
+    -fx-pref-height: 43px;
+    -fx-pref-width: 360px;
+    -fx-padding: 0 10px 0 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-text-fill: #333333;
+}
+
+.checkbox {
+    -fx-padding: 5px 0 0 10px;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+.login-button {
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;
+    -fx-pref-height: 35px;
+    -fx-pref-width: 360px;
+    -fx-background-color: #4caf50;
+    -fx-border-color: #388e3c;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.login-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.check-email-button, .verify-otp-button, .change-password-button {
+    -fx-background-color: #4caf50;
+    -fx-border-color: #388e3c;
+    -fx-text-fill: #ECF0F1;
+    -fx-font-size: 18px;
+    -fx-font-family: 'Berlin Sans FB';
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10 20 10 20;
+}
+
+.check-email-button:hover, .verify-otp-button:hover, .change-password-button:hover {
+    -fx-background-color: #2980B9;
+}
+
+.check-email-button:pressed, .verify-otp-button:pressed, .change-password-button:pressed {
+    -fx-background-color: #1F618D;
+}
+
+.forgot-button {
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #1e90ff;
+    -fx-underline: true;
+    -fx-pref-height: 26px;
+    -fx-pref-width: 360px;
+    -fx-padding: 0;
+}
+
+.forgot-button:hover {
+    -fx-text-fill: #104e8b;
+}
+
+.signup-button {
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 18px;
+    -fx-text-fill: #ffffff;
+    -fx-pref-height: 35px;
+    -fx-pref-width: 360px;
+    -fx-background-color: #4caf50;
+    -fx-border-color: #388e3c;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.signup-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.cartBT, .backBT {
+    -fx-background-color: white;
+    -fx-border-radius: 50%;
+    -fx-background-radius: 35%;
+}
+
+.cartBT:hover, .backBT:hover {
+    -fx-background-color: #45a049;
+}
+
+.cartBT:pressed, .backBT:pressed {
+    -fx-background-color: #1F618D;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}

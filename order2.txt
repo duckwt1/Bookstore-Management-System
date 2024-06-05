@@ -1,0 +1,23 @@
+Order Detail
+Order ID: 2
+Book Title: Re:Zero - Tắt Đi Và Bắt Đầu Lại Từ ZERO
+Price: 110000.0
+Quantity: 1
+
+Order ID: 2
+Book Title: Re:Zero - Tắt Đi Và Bắt Đầu Lại Từ ZERO
+Price: 110000.0
+Quantity: 1
+
+Order ID: 2
+Book Title: Re:Zero - Tắt Đi Và Bắt Đầu Lại Từ ZERO
+Price: 110000.0
+Quantity: 1
+
+Order ID: 2
+Book Title: Re:Zero - Tắt Đi Và Bắt Đầu Lại Từ ZERO
+Price: 110000.0
+Quantity: 1
+
+Total: 440000.0
+
