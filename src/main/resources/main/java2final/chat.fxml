@@ -8,21 +8,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.Pane?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
-    <center>
-        <ScrollPane fx:id="messageScrollPane" prefHeight="200.0" prefWidth="200.0" styleClass="main-container" BorderPane.alignment="CENTER">
-            <content>
-                <Pane prefHeight="502.0" prefWidth="766.0">
-                    <children>
-                        <VBox fx:id="messageBox" styleClass="input-field" />
-                    </children>
-                </Pane>
-            </content>
-        </ScrollPane>
-    </center>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChatController">
     <bottom>
         <HBox prefHeight="60.0" prefWidth="800.0" spacing="10.0" styleClass="chat-input-box" BorderPane.alignment="CENTER">
             <children>
@@ -43,4 +32,30 @@
             </children>
         </HBox>
     </bottom>
+   <center>
+      <Pane prefHeight="535.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane fx:id="messageScrollPane" layoutX="4.0" layoutY="3.0" prefHeight="572.0" prefWidth="892.0">
+               <content>
+                  <VBox fx:id="messageBox" prefHeight="577.0" prefWidth="871.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </center>
+   <top>
+      <Pane prefHeight="55.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backBT" layoutY="7.0" mnemonicParsing="false" onAction="#back" styleClass="cartBT">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="cartBT">
+                     <image>
+                        <Image url="@../../img/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </top>
 </BorderPane>

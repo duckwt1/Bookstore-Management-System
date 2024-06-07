@@ -40,11 +40,22 @@ public class Server {
                 userType = in.readLine();
                 System.out.println("User type: " + userType);
 
+                // If the user is a customer, the next message should be the customer ID
+                if (userType.equals("User")) {
+                    String customerId = in.readLine();
+                    System.out.println("Customer ID: " + customerId);
+
+                    // Send the customer ID to all other clients
+                    broadcast(customerId);
+                }
+
+
+
                 String message;
                 while ((message = in.readLine()) != null) {
                     String taggedMessage = userType + ": " + message;
                     System.out.println(taggedMessage);
-                    broadcast(taggedMessage);
+                    broadcast(message);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

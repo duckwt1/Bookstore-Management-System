@@ -15,12 +15,11 @@ public class Message {
     @Column(name = "message_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "sender_id", nullable = false)
     private Customer sender;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @ColumnDefault("4")
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "receiver_id", nullable = false)
     private Customer receiver;
 
@@ -30,7 +29,7 @@ public class Message {
     private String messageContent;
 
     @ColumnDefault("getdate()")
-    @Column(name = "created_at")
+    @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
     public Integer getId() {

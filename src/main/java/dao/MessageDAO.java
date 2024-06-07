@@ -24,6 +24,7 @@ public class MessageDAO {
                     .setParameter("receiver", receiver)
                     .executeUpdate();
             session.getTransaction().commit();
+            System.out.println(receiver);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,6 +43,15 @@ public class MessageDAO {
         return null;
     }
 
+    public List<Message> getMessages2(){
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "FROM Message";
+            return session.createQuery(hql, Message.class).getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }

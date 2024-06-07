@@ -113,3 +113,32 @@
 .button:hover {
     -fx-background-color: #45a049;
 }
+
+.message-box-sender{
+    -fx-background-color: #4caf50;
+    -fx-border-color: #388e3c;
+    -fx-text-fill: #ECF0F1;
+    -fx-font-size: 18px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10 20 10 20;
+}
+
+.message-box-receiver{
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-font-size: 18px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10 20 10 20;
+}
+
+.name-label {
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 18px;
+    -fx-text-fill: #333333;
+    -fx-padding: 5px 0 5px 5px;
+}
+
+

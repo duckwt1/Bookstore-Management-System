@@ -85,6 +85,7 @@ public class OrderBooksController {
             stage.show();
 
             ChatController chatController = loader.getController();
+            chatController.setCartList(cart);
             chatController.setUserType("User");
             chatController.connectToServer();
         } catch (Exception e) {

@@ -13,4 +13,8 @@ public class MessageBus {
     public List<Message> getMessages(Customer sender, Customer receiver) {
         return new dao.MessageDAO().getMessages(sender, receiver);
     }
+
+    public List<Message> getMessages2(){
+        return new dao.MessageDAO().getMessages2();
+    }
 }
