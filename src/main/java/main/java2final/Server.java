@@ -45,16 +45,21 @@ public class Server {
                     String customerId = in.readLine();
                     System.out.println("Customer ID: " + customerId);
 
+                    // The next message should be the customer username
+                    String customerUsername = in.readLine();
+                    System.out.println("Customer username: " + customerUsername);
+
                     // Send the customer ID to all other clients
                     broadcast(customerId);
+
+                    // Send the customer username to all other clients
+                    broadcast(customerUsername);
                 }
-
-
 
                 String message;
                 while ((message = in.readLine()) != null) {
                     String taggedMessage = userType + ": " + message;
-                    System.out.println(taggedMessage);
+                    System.out.println(message);
                     broadcast(message);
                 }
             } catch (IOException e) {

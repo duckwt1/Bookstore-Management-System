@@ -6,14 +6,13 @@ import dto.BookOrder;
 import dto.Customer;
 import dto.Message;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -24,7 +23,9 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static controller.LoginController.loggedInCustomer;
 
@@ -35,6 +36,9 @@ public class ChatController {
     private List<BookOrder> cart;
 
     private int customerId;
+    private String username;
+
+    private boolean check = true;
 
     @FXML
     private VBox messageBox;
@@ -56,6 +60,8 @@ public class ChatController {
     private BufferedReader in;
     private String userType; // user or admin
     private final int ADMIN_ID = 4; // Assuming 4 is the ID for admin
+
+    private Set<String> sentMessages = new HashSet<>();
 
     public void setUserType(String userType) {
         this.userType = userType;
@@ -95,7 +101,7 @@ public class ChatController {
                     if (message.getSender().getId() == loggedInCustomer.getId()) {
                         displayMessage(message.getMessageContent(), true);
                     } else if (message.getReceiver().getId() == loggedInCustomer.getId()) {
-                        displayMessage(message.getSender().getUsername() + ": " + message.getMessageContent(), false);
+                        displayMessage(message.getSender().getUsername() + ":" + message.getMessageContent(), false);
                     }
                 }
 
@@ -103,7 +109,7 @@ public class ChatController {
                     if (message.getSender().getId() == ADMIN_ID) {
                         displayMessage(message.getMessageContent(), true);
                     } else if (message.getReceiver().getId() == ADMIN_ID) {
-                        displayMessage(message.getSender().getUsername() + ": " + message.getMessageContent(), false);
+                        displayMessage(message.getSender().getUsername() + ":" + message.getMessageContent(), false);
                     }
                 }
             }
@@ -121,18 +127,32 @@ public class ChatController {
 
             if (userType.equals("User")) {
                 out.println(loggedInCustomer.getId());
+
+                // Send the customer username to the server
+                out.println(loggedInCustomer.getUsername());
             }
 
             // Thread to listen for messages from the server
             new Thread(() -> {
                 try {
-                    // first message from the server should be the userid
-                    customerId = Integer.parseInt(in.readLine());
+                    if (userType.equals("Admin")) {
+                        // first message from the server should be the userid
+                        customerId = Integer.parseInt(in.readLine());
+
+                        // second message from the server should be the username
+                        username = in.readLine();
+                    }
 
                     String message;
                     while ((message = in.readLine()) != null) {
-                        if (!message.startsWith(userType + ": ")) {
-                            displayMessage(message, false);
+                        if (!sentMessages.contains(message)) {
+                            if (userType.equals("User")) {
+                                displayMessage("Admin : " + message, false);
+                            } else if (userType.equals("Admin")){
+                                displayMessage( username +  " : " + message, false);
+                            }
+                        } else {
+                            sentMessages.remove(message);
                         }
                     }
                 } catch (IOException e) {
@@ -150,7 +170,8 @@ public class ChatController {
     private void sendMessage() {
         String message = textTF.getText();
         if (!message.trim().isEmpty()) {
-            out.println(userType + ": " + message);
+            out.println(message);
+            sentMessages.add(message);
             textTF.clear();
 
             if (userType.equals("User")) {
@@ -172,7 +193,7 @@ public class ChatController {
             TextFlow textFlow = new TextFlow(text);
             textFlow.getStyleClass().add(isSender ? "text-flow-sender" : "text-flow-receiver");
             textFlow.setPadding(new Insets(10,10,10,10));
-            textFlow.setMaxWidth(250);
+            textFlow.setMaxWidth(350);
             textFlow.setLineSpacing(5);
             textFlow.getStyleClass().add(isSender ? "message-box-sender" : "message-box-receiver");
 
@@ -185,6 +206,39 @@ public class ChatController {
             messageScrollPane.setVvalue(1.0);  // Scroll to bottom
         });
     }
+
+    private void displayMessage2(String message, boolean isSender, String username) {
+        Platform.runLater(() -> {
+            Text text = new Text(message);
+            text.wrappingWidthProperty().bind(messageBox.widthProperty().subtract(100));  // Adjust wrapping width
+
+            TextFlow textFlow = new TextFlow(text);
+            textFlow.getStyleClass().add(isSender ? "text-flow-sender" : "text-flow-receiver");
+            textFlow.setPadding(new Insets(10, 10, 10, 10));
+            textFlow.setMaxWidth(350);
+            textFlow.setLineSpacing(5);
+            textFlow.getStyleClass().add(isSender ? "message-box-sender" : "message-box-receiver");
+
+            HBox box = new HBox();
+            box.setAlignment(isSender ? Pos.CENTER_RIGHT : Pos.CENTER_LEFT);
+            box.setPadding(new Insets(5, 10, 5, 10));
+
+            VBox vbox = new VBox();
+            if (check == true) {
+                Label label = new Label(username);
+                label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+                vbox.getChildren().add(label);
+                check = false;
+            }
+            vbox.getChildren().add(textFlow);
+
+            box.getChildren().add(vbox);
+
+            messageBox.getChildren().add(box);
+            messageScrollPane.setVvalue(1.0);  // Scroll to bottom
+        });
+    }
+
 
 
     public void closeConnection() {
@@ -228,6 +282,13 @@ public class ChatController {
         }
 
         closeConnection();
+    }
+
+    @FXML
+    void send2(KeyEvent event) {
+        if (event.getCode().toString().equals("ENTER")) {
+            sendMessage();
+        }
     }
 
     public void setCartList(List<BookOrder> cart) {

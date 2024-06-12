@@ -15,7 +15,7 @@
     <bottom>
         <HBox prefHeight="60.0" prefWidth="800.0" spacing="10.0" styleClass="chat-input-box" BorderPane.alignment="CENTER">
             <children>
-                <TextField fx:id="textTF" prefHeight="60.0" styleClass="input-field" HBox.hgrow="ALWAYS">
+                <TextField fx:id="textTF" onKeyPressed="#send2" prefHeight="60.0" styleClass="input-field" HBox.hgrow="ALWAYS">
                     <HBox.margin>
                         <Insets left="20.0" />
                     </HBox.margin>
